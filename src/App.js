@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Post from "./Post";
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      username: "cmbyn_official",
+      caption: "Coming soooonn...!!",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRphepRtQcXYGq6QVhJWPzgjCgMX2I0Wt3z7g&usqp=CAU",
+    },
+    {
+      username: "tchalamet",
+      caption: "This is awesome...",
+      imageUrl:
+        "https://pmcdeadline2.files.wordpress.com/2018/11/timotheechalamet-0815_gabrielgoldberg.jpg?w=1024",
+    },
+  ]);
+
   return (
     <div className="App">
       <div className="app-header">
@@ -14,9 +29,13 @@ function App() {
 
       <h2>Welcome to Diva's instagram clone!</h2>
 
-      <Post />
-      <Post />
-      <Post />
+      {posts.map((post) => (
+        <Post
+          username={post.username}
+          caption={post.caption}
+          imageUrl={post.imageUrl}
+        />
+      ))}
     </div>
   );
 }
