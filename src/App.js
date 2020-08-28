@@ -13,8 +13,8 @@ function App() {
     db.collection("posts").onSnapshot((snapshot) => {
       //everytime a new post is added, this code fires...
       setPosts(
-        // snapshot.docs.map((doc) => ({
-        //   id: doc.id,
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
           post: doc.data(),
         }))
       );
