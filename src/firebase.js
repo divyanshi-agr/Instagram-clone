@@ -13,6 +13,6 @@ const firebaseApp = firebase.initializeApp({
 
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
-const storgae = firebase.storage();
+const storage = firebase.storage();
 
-export { db, auth, storgae };
+export { db, auth, storage };
