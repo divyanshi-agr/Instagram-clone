@@ -37,10 +37,25 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    auth.
-  })
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        //user has logged in...
+        console.log(authUser);
+        setUser(authUser);
+      } else {
+        //user has logged out...
+        setUser(null);
+      }
+    });
+
+    return () => {
+      //perform some cleanup actions
+      unsubscribe();
+    };
+  }, [user, username]);
 
   //useEffect -> Runs a piece of code based on a specific condition
 
@@ -61,6 +76,11 @@ function App() {
     event.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        return authUser.user.updateProfile({
+          displayName: username,
+        });
+      })
       .catch((error) => alert(error.message));
   };
 
