@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Post from "./Post";
-import { db } from "./firebase";
+import { db, auth } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
@@ -38,6 +38,10 @@ function App() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  useEffect(() => {
+    auth.
+  })
+
   //useEffect -> Runs a piece of code based on a specific condition
 
   useEffect(() => {
@@ -53,17 +57,24 @@ function App() {
     });
   }, []);
 
-  const signUp = (event) => {};
+  const signUp = (event) => {
+    event.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .catch((error) => alert(error.message));
+  };
 
   return (
     <div className="App">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <center>
-            <img
-              className="app-headerImage"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
-            />
+          <form className="app-signup">
+            <center>
+              <img
+                className="app-headerImage"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
+              />
+            </center>
             <Input
               type="text"
               placeholder="username"
@@ -82,8 +93,10 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button onClick={signUp}>Sign Up</Button>
-          </center>
+            <Button type="submit" onClick={signUp}>
+              Sign Up
+            </Button>
+          </form>
         </div>
       </Modal>
 
