@@ -4,6 +4,7 @@ import Post from "./Post";
 import { db } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+import { Button } from "@material-ui/core";
 
 function getModalStyle() {
   const top = 50;
@@ -49,11 +50,18 @@ function App() {
     });
   }, []);
 
+  const signUp = (event) => {};
+
   return (
     <div className="App">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <h2>I am a modal.</h2>
+          <center>
+            <img
+              className="app-headerImage"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
+            />
+          </center>
         </div>
       </Modal>
 
@@ -63,6 +71,8 @@ function App() {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
         />
       </div>
+
+      <Button onClick={() => setOpen(true)}>Sign Up</Button>
 
       <h2>Welcome to Diva's instagram clone!</h2>
 
