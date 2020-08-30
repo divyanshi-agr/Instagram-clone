@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ImageUpload() {
+  const [caption, setCaption] = useState("");
+
   return (
     <div>
-      <input type="text" />
-      <input type="file" onChange={handleChnage} />
+      <input type="text" placeholder="Enter a caption..." />
+      <input type="file" onChange={handleChange} />
       <Button onClick={handleUpload}>Upload</Button>
     </div>
   );
