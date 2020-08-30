@@ -88,7 +88,7 @@ function App() {
   };
 
   const signIn = (event) => {
-    EventTarget.preventDefault();
+    event.preventDefault();
 
     auth
       .signInWithEmailAndPassword(email, password)
@@ -154,8 +154,8 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" onClick={signUp}>
-              Sign Up
+            <Button type="submit" onClick={signIn}>
+              Sign In
             </Button>
           </form>
         </div>
