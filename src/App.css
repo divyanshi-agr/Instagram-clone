@@ -24,3 +24,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.app-posts {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.app-postsRight {
+  margin-left: 20px;
+}

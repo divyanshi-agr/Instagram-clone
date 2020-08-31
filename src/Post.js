@@ -2,7 +2,19 @@ import React from "react";
 import "./Post.css";
 import Avatar from "@material-ui/core/Avatar";
 
-function Post({ username, caption, imageUrl }) {
+function Post({ username, caption, imageUrl, postId }) {
+
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    //let unsubscribe;
+
+    effect
+    return () => {
+      cleanup
+    }
+  }, [input])
+
   return (
     <div className="post">
       <div className="post-header">
