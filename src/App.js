@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
-import InstagramEmbed from 'react-instagram-embed';
+import InstagramEmbed from "react-instagram-embed";
 
 function getModalStyle() {
   const top = 50;
@@ -101,8 +101,6 @@ function App() {
 
   return (
     <div className="App">
-
-
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app-signup">
@@ -173,11 +171,11 @@ function App() {
         {user ? (
           <Button onClick={() => auth.signOut()}>Logout</Button>
         ) : (
-            <div className="app-loginContainer">
-              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-              <Button onClick={() => setOpen(true)}>Sign Up</Button>
-            </div>
-          )}
+          <div className="app-loginContainer">
+            <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+            <Button onClick={() => setOpen(true)}>Sign Up</Button>
+          </div>
+        )}
       </div>
 
       <div className="app-posts">
@@ -189,40 +187,31 @@ function App() {
               username={post.username}
               caption={post.caption}
               imageUrl={post.imageUrl}
+              user={user}
             />
-          ))
-          }
+          ))}
         </div>
         <div className="app-postsRight">
           <InstagramEmbed
-            url='https://instagr.am/p/Zw9o4/'
+            url="https://www.instagram.com/p/CBvwa3gJgDA/"
             maxWidth={320}
             hideCaption={false}
-            containerTagName='div'
-            protocol=''
+            containerTagName="div"
+            protocol=""
             injectScript
-            onLoading={() => { }}
-            onSuccess={() => { }}
-            onAfterRender={() => { }}
-            onFailure={() => { }}
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
           />
-
         </div>
       </div>
-
-
-
-
-
-
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
-          <h3>Sorry, you need to login to upload!</h3>
-        )}
-
-
+        <h3>Sorry, you need to login to upload!</h3>
+      )}
     </div>
   );
 }
